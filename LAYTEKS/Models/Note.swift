@@ -3,7 +3,7 @@ import Foundation
 
 @Model
 final class Note {
-    var id: UUID
+    var id: UUID // explicit for SwiftUI Identifiable conformance in List/ForEach
     var title: String
     var latexSource: String
     var createdAt: Date

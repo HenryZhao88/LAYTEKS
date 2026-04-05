@@ -7,7 +7,7 @@ final class Folder {
     var name: String
     var createdAt: Date
 
-    @Relationship(deleteRule: .nullify)
+    // Inverse declared on Note.folder — no annotation needed here
     var notes: [Note]
 
     init(name: String) {

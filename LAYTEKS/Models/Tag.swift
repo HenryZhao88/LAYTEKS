@@ -6,7 +6,7 @@ final class Tag {
     var id: UUID
     var name: String
 
-    @Relationship(deleteRule: .nullify)
+    // Inverse declared on Note.tags — no annotation needed here
     var notes: [Note]
 
     init(name: String) {
