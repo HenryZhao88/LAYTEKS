@@ -1,0 +1,67 @@
+name: LAYTEKS
+options:
+  bundleIdPrefix: com.layteks
+  deploymentTarget:
+    iOS: "18.0"
+  xcodeVersion: "16.0"
+  createIntermediateGroups: true
+  defaultConfig: Debug
+
+configs:
+  Debug: debug
+  Release: release
+
+settings:
+  base:
+    SWIFT_VERSION: "5.10"
+    IPHONEOS_DEPLOYMENT_TARGET: "18.0"
+
+targets:
+  LAYTEKS:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - path: LAYTEKS
+        excludes:
+          - "Rendering/katex.min.js"
+          - "Rendering/katex.min.css"
+          - "Rendering/katex-render.html"
+          - "Rendering/fonts/**"
+          - "**/.DS_Store"
+    resources:
+      - path: LAYTEKS/Rendering/katex-render.html
+      - path: LAYTEKS/Rendering/katex.min.js
+      - path: LAYTEKS/Rendering/katex.min.css
+      - path: LAYTEKS/Rendering/fonts
+        type: folder
+    info:
+      path: LAYTEKS/Info.plist
+      properties:
+        CFBundleDisplayName: LAYTEKS
+        CFBundleName: LAYTEKS
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.layteks.app
+        SWIFT_VERSION: "5.10"
+        CODE_SIGN_STYLE: Automatic
+
+  LAYTEKSTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - path: LAYTEKSTests
+    dependencies:
+      - target: LAYTEKS
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.layteks.tests

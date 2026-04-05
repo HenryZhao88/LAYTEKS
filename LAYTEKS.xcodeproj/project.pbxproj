@@ -1,0 +1,412 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		58389A0823785A4A56608624 /* LAYTEKSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73EB7769278F53281DDFB4F /* LAYTEKSApp.swift */; };
+		751A693AB45C238B10FF8730 /* LAYTEKSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077042E523147CD8C7D489D7 /* LAYTEKSTests.swift */; };
+		7ABB601CE7D2E0E993579E5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC26629842E329C79ACF32 /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7C3F90AAD4C378099DA10BEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33E1355AEB00CAD5D81C696F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 404F1935C7C537511DF87B4C;
+			remoteInfo = LAYTEKS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		077042E523147CD8C7D489D7 /* LAYTEKSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAYTEKSTests.swift; sourceTree = "<group>"; };
+		152E65298CBF9B9B83865FBC /* LAYTEKS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LAYTEKS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		15AC26629842E329C79ACF32 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		403A477C20E54510AE09A642 /* LAYTEKSTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = LAYTEKSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A73EB7769278F53281DDFB4F /* LAYTEKSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAYTEKSApp.swift; sourceTree = "<group>"; };
+		F77781B6CB7A280C31359DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		4E6C7425B1895E934B5E17B5 /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
+		57D9FFD8E2F0628AD4A09277 /* LAYTEKS */ = {
+			isa = PBXGroup;
+			children = (
+				F77781B6CB7A280C31359DD4 /* Info.plist */,
+				A73EB7769278F53281DDFB4F /* LAYTEKSApp.swift */,
+				4E6C7425B1895E934B5E17B5 /* Rendering */,
+				C9A2061C252FA6C204104A13 /* Views */,
+			);
+			path = LAYTEKS;
+			sourceTree = "<group>";
+		};
+		7EEB8111B9D4F6964FA52FE1 /* LAYTEKSTests */ = {
+			isa = PBXGroup;
+			children = (
+				077042E523147CD8C7D489D7 /* LAYTEKSTests.swift */,
+			);
+			path = LAYTEKSTests;
+			sourceTree = "<group>";
+		};
+		86048A09B043AF2D1896EC2D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				152E65298CBF9B9B83865FBC /* LAYTEKS.app */,
+				403A477C20E54510AE09A642 /* LAYTEKSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C9A2061C252FA6C204104A13 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				15AC26629842E329C79ACF32 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D1A1064173CF4CA1ED078149 = {
+			isa = PBXGroup;
+			children = (
+				57D9FFD8E2F0628AD4A09277 /* LAYTEKS */,
+				7EEB8111B9D4F6964FA52FE1 /* LAYTEKSTests */,
+				86048A09B043AF2D1896EC2D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		404F1935C7C537511DF87B4C /* LAYTEKS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C842E4FC0598B39527367A6 /* Build configuration list for PBXNativeTarget "LAYTEKS" */;
+			buildPhases = (
+				49E916DD5739E7A8844D1633 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LAYTEKS;
+			packageProductDependencies = (
+			);
+			productName = LAYTEKS;
+			productReference = 152E65298CBF9B9B83865FBC /* LAYTEKS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5E5803E6F486C29CFF6709AE /* LAYTEKSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 419575F7B9AB698563541468 /* Build configuration list for PBXNativeTarget "LAYTEKSTests" */;
+			buildPhases = (
+				E96BA1B9372B63ABD00CDE3F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				15B24C1BC069E4E98CE9766C /* PBXTargetDependency */,
+			);
+			name = LAYTEKSTests;
+			packageProductDependencies = (
+			);
+			productName = LAYTEKSTests;
+			productReference = 403A477C20E54510AE09A642 /* LAYTEKSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		33E1355AEB00CAD5D81C696F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					404F1935C7C537511DF87B4C = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 09DFF4FCEB1D2ACC8CC16B90 /* Build configuration list for PBXProject "LAYTEKS" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = D1A1064173CF4CA1ED078149;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 86048A09B043AF2D1896EC2D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				404F1935C7C537511DF87B4C /* LAYTEKS */,
+				5E5803E6F486C29CFF6709AE /* LAYTEKSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		49E916DD5739E7A8844D1633 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ABB601CE7D2E0E993579E5F /* ContentView.swift in Sources */,
+				58389A0823785A4A56608624 /* LAYTEKSApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E96BA1B9372B63ABD00CDE3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				751A693AB45C238B10FF8730 /* LAYTEKSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		15B24C1BC069E4E98CE9766C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 404F1935C7C537511DF87B4C /* LAYTEKS */;
+			targetProxy = 7C3F90AAD4C378099DA10BEF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		18D4A0F8A59939417E694A0C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LAYTEKS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.layteks.app;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.10;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		68FAFE0E9FC5DE249B3377A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.layteks.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LAYTEKS.app/LAYTEKS";
+			};
+			name = Debug;
+		};
+		7AAB6832D4927AEA2EB937B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.10;
+			};
+			name = Release;
+		};
+		E04BED59F058237E6F0AA55B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.layteks.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LAYTEKS.app/LAYTEKS";
+			};
+			name = Release;
+		};
+		E6FA09B4553873738A4B7031 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LAYTEKS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.layteks.app;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.10;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F1C3142034425C74CAAD8FCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.10;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		09DFF4FCEB1D2ACC8CC16B90 /* Build configuration list for PBXProject "LAYTEKS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1C3142034425C74CAAD8FCD /* Debug */,
+				7AAB6832D4927AEA2EB937B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		419575F7B9AB698563541468 /* Build configuration list for PBXNativeTarget "LAYTEKSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68FAFE0E9FC5DE249B3377A3 /* Debug */,
+				E04BED59F058237E6F0AA55B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7C842E4FC0598B39527367A6 /* Build configuration list for PBXNativeTarget "LAYTEKS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6FA09B4553873738A4B7031 /* Debug */,
+				18D4A0F8A59939417E694A0C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 33E1355AEB00CAD5D81C696F /* Project object */;
+}
