@@ -7,13 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		029EFBBC6C03682746E9BF01 /* TagChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC7192719D8AE7D7A41D25A /* TagChipView.swift */; };
+		132401693750A4EE2CA634A2 /* LaTeXEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF376A787154B308949BF18 /* LaTeXEditorView.swift */; };
+		21F276D748AE085C4053D1A7 /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C25715B1D8436A18447EC11 /* NoteListView.swift */; };
+		315B55454E66FAC697C8E658 /* NoteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A2B00271A095322C4963C /* NoteCard.swift */; };
+		3D931C0B3EFC590C2A14A73E /* ThemeEnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7250D2C24C8224B82A457B7 /* ThemeEnvironmentKey.swift */; };
 		54D9DFFF26BBEE7421C4E2DC /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE6EF7310DB216218C7A8F0 /* Note.swift */; };
 		550AACACF2742106EAE80214 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F3A61C2AF0DC00D9B7ABEB /* ModelTests.swift */; };
+		5744020299789B5BCA5842B7 /* FolderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5676CA4621F1BC9CA1F4E030 /* FolderDetailView.swift */; };
 		58389A0823785A4A56608624 /* LAYTEKSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73EB7769278F53281DDFB4F /* LAYTEKSApp.swift */; };
 		751A693AB45C238B10FF8730 /* LAYTEKSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077042E523147CD8C7D489D7 /* LAYTEKSTests.swift */; };
+		780DAE7448C28089C8981B5A /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4C8065BFBAA8AFF689FCF /* BrowseView.swift */; };
 		7ABB601CE7D2E0E993579E5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC26629842E329C79ACF32 /* ContentView.swift */; };
+		937F4C2E73AC646244C3634B /* KaTeXWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401FF08FD60D0FE400B46E9 /* KaTeXWebView.swift */; };
+		B5268F9B2AD1CADBCE08674C /* KaTeXEscapeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C81535E412FC204C4050B7 /* KaTeXEscapeTests.swift */; };
 		B61A0FF90AD3D3087663EF5E /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F5AD1A64AFE6381BA1D68 /* Tag.swift */; };
+		CA18CA53878B6A105DFE17E3 /* NoteEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B2AA6D2351E45875950969 /* NoteEditorView.swift */; };
+		CF10BC566CABB1EEC0171657 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A66795393211867E6A17163 /* AppTheme.swift */; };
+		DB1BB024E989A63271914653 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C9683B88C868D96AA6FCA2 /* SettingsView.swift */; };
 		DBB72F4EA6F7C0EF587901A9 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07033136EEDE886ED5316B06 /* Folder.swift */; };
+		E33DFFDF64D483DBBE049475 /* FilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D609BB803AD71F0E37DC44E /* FilterTests.swift */; };
+		F357BB3E935A2B894AEC395C /* FilterChipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C899E766D9355FF2278374 /* FilterChipsView.swift */; };
+		F3A8FB0704261E2AA5D14B27 /* TagDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6963CF19DC5C9639D2EFB3D6 /* TagDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,20 +44,46 @@
 /* Begin PBXFileReference section */
 		07033136EEDE886ED5316B06 /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		077042E523147CD8C7D489D7 /* LAYTEKSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAYTEKSTests.swift; sourceTree = "<group>"; };
+		0C6A2B00271A095322C4963C /* NoteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCard.swift; sourceTree = "<group>"; };
+		13B2AA6D2351E45875950969 /* NoteEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorView.swift; sourceTree = "<group>"; };
+		1401FF08FD60D0FE400B46E9 /* KaTeXWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaTeXWebView.swift; sourceTree = "<group>"; };
 		152E65298CBF9B9B83865FBC /* LAYTEKS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LAYTEKS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15AC26629842E329C79ACF32 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1C25715B1D8436A18447EC11 /* NoteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListView.swift; sourceTree = "<group>"; };
 		3F8F5AD1A64AFE6381BA1D68 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		403A477C20E54510AE09A642 /* LAYTEKSTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = LAYTEKSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D609BB803AD71F0E37DC44E /* FilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTests.swift; sourceTree = "<group>"; };
+		5676CA4621F1BC9CA1F4E030 /* FolderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDetailView.swift; sourceTree = "<group>"; };
+		56B4C8065BFBAA8AFF689FCF /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
+		56C9683B88C868D96AA6FCA2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		6963CF19DC5C9639D2EFB3D6 /* TagDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDetailView.swift; sourceTree = "<group>"; };
+		93C899E766D9355FF2278374 /* FilterChipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterChipsView.swift; sourceTree = "<group>"; };
+		9A66795393211867E6A17163 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		A73EB7769278F53281DDFB4F /* LAYTEKSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAYTEKSApp.swift; sourceTree = "<group>"; };
+		CCC7192719D8AE7D7A41D25A /* TagChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagChipView.swift; sourceTree = "<group>"; };
 		EBE6EF7310DB216218C7A8F0 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		EEF376A787154B308949BF18 /* LaTeXEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaTeXEditorView.swift; sourceTree = "<group>"; };
+		F4C81535E412FC204C4050B7 /* KaTeXEscapeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaTeXEscapeTests.swift; sourceTree = "<group>"; };
+		F7250D2C24C8224B82A457B7 /* ThemeEnvironmentKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEnvironmentKey.swift; sourceTree = "<group>"; };
 		F77781B6CB7A280C31359DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F9F3A61C2AF0DC00D9B7ABEB /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		4B82F3496E9B71D4EFA7462C /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				56B4C8065BFBAA8AFF689FCF /* BrowseView.swift */,
+				5676CA4621F1BC9CA1F4E030 /* FolderDetailView.swift */,
+				6963CF19DC5C9639D2EFB3D6 /* TagDetailView.swift */,
+			);
+			path = Browse;
+			sourceTree = "<group>";
+		};
 		4E6C7425B1895E934B5E17B5 /* Rendering */ = {
 			isa = PBXGroup;
 			children = (
+				1401FF08FD60D0FE400B46E9 /* KaTeXWebView.swift */,
 			);
 			path = Rendering;
 			sourceTree = "<group>";
@@ -52,11 +93,32 @@
 			children = (
 				F77781B6CB7A280C31359DD4 /* Info.plist */,
 				A73EB7769278F53281DDFB4F /* LAYTEKSApp.swift */,
+				7109A75D1E8CCE6518939A64 /* Components */,
 				7C9345BDABBE3792EC8A1161 /* Models */,
 				4E6C7425B1895E934B5E17B5 /* Rendering */,
+				75F40F2E78CD0E82B4E5FA24 /* Theme */,
 				C9A2061C252FA6C204104A13 /* Views */,
 			);
 			path = LAYTEKS;
+			sourceTree = "<group>";
+		};
+		7109A75D1E8CCE6518939A64 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				93C899E766D9355FF2278374 /* FilterChipsView.swift */,
+				EEF376A787154B308949BF18 /* LaTeXEditorView.swift */,
+				CCC7192719D8AE7D7A41D25A /* TagChipView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		75F40F2E78CD0E82B4E5FA24 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				9A66795393211867E6A17163 /* AppTheme.swift */,
+				F7250D2C24C8224B82A457B7 /* ThemeEnvironmentKey.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		7C9345BDABBE3792EC8A1161 /* Models */ = {
@@ -72,6 +134,8 @@
 		7EEB8111B9D4F6964FA52FE1 /* LAYTEKSTests */ = {
 			isa = PBXGroup;
 			children = (
+				4D609BB803AD71F0E37DC44E /* FilterTests.swift */,
+				F4C81535E412FC204C4050B7 /* KaTeXEscapeTests.swift */,
 				077042E523147CD8C7D489D7 /* LAYTEKSTests.swift */,
 				F9F3A61C2AF0DC00D9B7ABEB /* ModelTests.swift */,
 			);
@@ -87,10 +151,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A08BB5D525017B6D51EB4D1C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				56C9683B88C868D96AA6FCA2 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		C9A2061C252FA6C204104A13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				15AC26629842E329C79ACF32 /* ContentView.swift */,
+				4B82F3496E9B71D4EFA7462C /* Browse */,
+				FDD6793C0E9726B721DB050F /* Notes */,
+				A08BB5D525017B6D51EB4D1C /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -102,6 +177,16 @@
 				7EEB8111B9D4F6964FA52FE1 /* LAYTEKSTests */,
 				86048A09B043AF2D1896EC2D /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		FDD6793C0E9726B721DB050F /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				0C6A2B00271A095322C4963C /* NoteCard.swift */,
+				13B2AA6D2351E45875950969 /* NoteEditorView.swift */,
+				1C25715B1D8436A18447EC11 /* NoteListView.swift */,
+			);
+			path = Notes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,11 +266,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF10BC566CABB1EEC0171657 /* AppTheme.swift in Sources */,
+				780DAE7448C28089C8981B5A /* BrowseView.swift in Sources */,
 				7ABB601CE7D2E0E993579E5F /* ContentView.swift in Sources */,
+				F357BB3E935A2B894AEC395C /* FilterChipsView.swift in Sources */,
 				DBB72F4EA6F7C0EF587901A9 /* Folder.swift in Sources */,
+				5744020299789B5BCA5842B7 /* FolderDetailView.swift in Sources */,
+				937F4C2E73AC646244C3634B /* KaTeXWebView.swift in Sources */,
 				58389A0823785A4A56608624 /* LAYTEKSApp.swift in Sources */,
+				132401693750A4EE2CA634A2 /* LaTeXEditorView.swift in Sources */,
 				54D9DFFF26BBEE7421C4E2DC /* Note.swift in Sources */,
+				315B55454E66FAC697C8E658 /* NoteCard.swift in Sources */,
+				CA18CA53878B6A105DFE17E3 /* NoteEditorView.swift in Sources */,
+				21F276D748AE085C4053D1A7 /* NoteListView.swift in Sources */,
+				DB1BB024E989A63271914653 /* SettingsView.swift in Sources */,
 				B61A0FF90AD3D3087663EF5E /* Tag.swift in Sources */,
+				029EFBBC6C03682746E9BF01 /* TagChipView.swift in Sources */,
+				F3A8FB0704261E2AA5D14B27 /* TagDetailView.swift in Sources */,
+				3D931C0B3EFC590C2A14A73E /* ThemeEnvironmentKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +291,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E33DFFDF64D483DBBE049475 /* FilterTests.swift in Sources */,
+				B5268F9B2AD1CADBCE08674C /* KaTeXEscapeTests.swift in Sources */,
 				751A693AB45C238B10FF8730 /* LAYTEKSTests.swift in Sources */,
 				550AACACF2742106EAE80214 /* ModelTests.swift in Sources */,
 			);
