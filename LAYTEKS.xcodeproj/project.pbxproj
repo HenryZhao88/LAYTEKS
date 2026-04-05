@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54D9DFFF26BBEE7421C4E2DC /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE6EF7310DB216218C7A8F0 /* Note.swift */; };
+		550AACACF2742106EAE80214 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F3A61C2AF0DC00D9B7ABEB /* ModelTests.swift */; };
 		58389A0823785A4A56608624 /* LAYTEKSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73EB7769278F53281DDFB4F /* LAYTEKSApp.swift */; };
 		751A693AB45C238B10FF8730 /* LAYTEKSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077042E523147CD8C7D489D7 /* LAYTEKSTests.swift */; };
 		7ABB601CE7D2E0E993579E5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC26629842E329C79ACF32 /* ContentView.swift */; };
+		B61A0FF90AD3D3087663EF5E /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F5AD1A64AFE6381BA1D68 /* Tag.swift */; };
+		DBB72F4EA6F7C0EF587901A9 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07033136EEDE886ED5316B06 /* Folder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +27,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07033136EEDE886ED5316B06 /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		077042E523147CD8C7D489D7 /* LAYTEKSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAYTEKSTests.swift; sourceTree = "<group>"; };
 		152E65298CBF9B9B83865FBC /* LAYTEKS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LAYTEKS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15AC26629842E329C79ACF32 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3F8F5AD1A64AFE6381BA1D68 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		403A477C20E54510AE09A642 /* LAYTEKSTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = LAYTEKSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A73EB7769278F53281DDFB4F /* LAYTEKSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAYTEKSApp.swift; sourceTree = "<group>"; };
+		EBE6EF7310DB216218C7A8F0 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		F77781B6CB7A280C31359DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F9F3A61C2AF0DC00D9B7ABEB /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -44,16 +52,28 @@
 			children = (
 				F77781B6CB7A280C31359DD4 /* Info.plist */,
 				A73EB7769278F53281DDFB4F /* LAYTEKSApp.swift */,
+				7C9345BDABBE3792EC8A1161 /* Models */,
 				4E6C7425B1895E934B5E17B5 /* Rendering */,
 				C9A2061C252FA6C204104A13 /* Views */,
 			);
 			path = LAYTEKS;
 			sourceTree = "<group>";
 		};
+		7C9345BDABBE3792EC8A1161 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				07033136EEDE886ED5316B06 /* Folder.swift */,
+				EBE6EF7310DB216218C7A8F0 /* Note.swift */,
+				3F8F5AD1A64AFE6381BA1D68 /* Tag.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		7EEB8111B9D4F6964FA52FE1 /* LAYTEKSTests */ = {
 			isa = PBXGroup;
 			children = (
 				077042E523147CD8C7D489D7 /* LAYTEKSTests.swift */,
+				F9F3A61C2AF0DC00D9B7ABEB /* ModelTests.swift */,
 			);
 			path = LAYTEKSTests;
 			sourceTree = "<group>";
@@ -129,7 +149,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 2640;
 				TargetAttributes = {
 					404F1935C7C537511DF87B4C = {
 						ProvisioningStyle = Automatic;
@@ -162,7 +182,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ABB601CE7D2E0E993579E5F /* ContentView.swift in Sources */,
+				DBB72F4EA6F7C0EF587901A9 /* Folder.swift in Sources */,
 				58389A0823785A4A56608624 /* LAYTEKSApp.swift in Sources */,
+				54D9DFFF26BBEE7421C4E2DC /* Note.swift in Sources */,
+				B61A0FF90AD3D3087663EF5E /* Tag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				751A693AB45C238B10FF8730 /* LAYTEKSTests.swift in Sources */,
+				550AACACF2742106EAE80214 /* ModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,7 +216,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = LAYTEKS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -208,7 +232,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -266,7 +290,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -281,7 +305,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,7 +325,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = LAYTEKS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -364,7 +388,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
