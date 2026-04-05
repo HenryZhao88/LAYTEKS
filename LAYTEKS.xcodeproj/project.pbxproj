@@ -52,7 +52,7 @@
 		0CBBA14A91CC53444A84DEAB /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = LAYTEKS/Rendering/fonts; sourceTree = SOURCE_ROOT; };
 		13B2AA6D2351E45875950969 /* NoteEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorView.swift; sourceTree = "<group>"; };
 		1401FF08FD60D0FE400B46E9 /* KaTeXWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaTeXWebView.swift; sourceTree = "<group>"; };
-		152E65298CBF9B9B83865FBC /* LAYTEKS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LAYTEKS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		152E65298CBF9B9B83865FBC /* LAYTEKS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LAYTEKS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15AC26629842E329C79ACF32 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1C25715B1D8436A18447EC11 /* NoteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListView.swift; sourceTree = "<group>"; };
 		1F3A8EEB6E46A6FFE2090A08 /* katex.min.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = katex.min.css; sourceTree = "<group>"; };
@@ -342,6 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 82G942H4LJ;
 				INFOPLIST_FILE = LAYTEKS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -453,6 +454,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 82G942H4LJ;
 				INFOPLIST_FILE = LAYTEKS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
