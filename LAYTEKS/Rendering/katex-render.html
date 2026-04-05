@@ -1,12 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="katex.min.css">
-<script src="katex.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="katex.min.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: transparent;
+      color: #E0E0FF;
+      font-family: -apple-system, sans-serif;
+      padding: 20px;
+      font-size: 18px;
+      user-select: text;
+      -webkit-user-select: text;
+      word-wrap: break-word;
+    }
+    #output { min-height: 40px; line-height: 2.0; }
+    .katex-display { overflow-x: auto; padding: 4px 0; }
+    .error-block {
+      color: #FF6B6B;
+      font-size: 13px;
+      font-family: monospace;
+      background: rgba(255, 107, 107, 0.1);
+      padding: 10px 14px;
+      border-radius: 8px;
+      border-left: 3px solid #FF6B6B;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  </style>
+  <script src="katex.min.js"></script>
 </head>
 <body>
-<div id="output"></div>
+  <div id="output"></div>
+  <script>
+    var showErrors = true;
+
+    function renderKaTeX(source, options) {
+      if (options && options.showErrors !== undefined) {
+        showErrors = options.showErrors;
+      }
+      var output = document.getElementById('output');
+      if (!source || source.trim() === '') {
+        output.innerHTML = '';
+        return;
+      }
+      try {
+        katex.render(source, output, {
+          displayMode: true,
+          throwOnError: true,
+          trust: false,
+          strict: false
+        });
+      } catch (e) {
+        if (showErrors) {
+          output.innerHTML = '<div class="error-block">' + escapeHtml(e.message) + '</div>';
+        } else {
+          output.innerHTML = '';
+        }
+        if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.katexError) {
+          window.webkit.messageHandlers.katexError.postMessage(e.message);
+        }
+      }
+    }
+
+    function setTheme(backgroundColor, textColor) {
+      document.body.style.backgroundColor = backgroundColor;
+      document.body.style.color = textColor;
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+  </script>
 </body>
 </html>
