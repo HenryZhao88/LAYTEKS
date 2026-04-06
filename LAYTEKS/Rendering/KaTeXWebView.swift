@@ -75,6 +75,9 @@ struct KaTeXWebView: UIViewRepresentable {
 
         func render() {
             guard let webView, didLoadRenderer else { return }
+            DispatchQueue.main.async { [weak self] in
+                self?.onError?("")
+            }
             let escaped  = pendingSource.escapedForJS()
             let bg       = pendingTheme.backgroundHex
             let text     = pendingTheme.primaryTextHex
@@ -148,6 +151,28 @@ struct KaTeXWebView: UIViewRepresentable {
 
         func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
             presentLoadError("Failed to load KaTeX renderer: \(error.localizedDescription)")
+        }
+
+        func webView(
+            _ webView: WKWebView,
+            decidePolicyFor navigationAction: WKNavigationAction,
+            decisionHandler: @escaping (WKNavigationActionPolicy) -> Void
+        ) {
+            guard let url = navigationAction.request.url else {
+                decisionHandler(.cancel)
+                return
+            }
+
+            let allowedSchemes = ["file", "about", "data"]
+            if let scheme = url.scheme?.lowercased(), allowedSchemes.contains(scheme) {
+                decisionHandler(.allow)
+                return
+            }
+
+            decisionHandler(.cancel)
+            DispatchQueue.main.async { [weak self] in
+                self?.onError?("Blocked external navigation to \(url.absoluteString). The preview only uses bundled local assets so it works offline.")
+            }
         }
 
         // WKScriptMessageHandler — receive parse errors from JS

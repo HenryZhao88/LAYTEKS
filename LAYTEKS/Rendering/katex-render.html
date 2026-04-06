@@ -31,8 +31,38 @@
     .doc-list {
       padding-left: 20px;
     }
+    .doc-ordered-list {
+      padding-left: 24px;
+    }
     .doc-list li + li {
       margin-top: 6px;
+    }
+    .doc-rule {
+      border: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.26), transparent);
+      margin: 6px 0;
+    }
+    .doc-strong {
+      font-weight: 700;
+      color: #F7F7FF;
+    }
+    .doc-bracket-label {
+      display: inline-block;
+      padding: 1px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      letter-spacing: 0.01em;
+    }
+    .doc-emphasis {
+      font-style: italic;
+    }
+    .doc-link {
+      color: #9AD7FF;
+      text-decoration: underline;
+      text-decoration-color: rgba(154, 215, 255, 0.55);
+      text-underline-offset: 0.14em;
     }
     .doc-code {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -52,6 +82,71 @@
       white-space: pre-wrap;
       word-break: break-word;
     }
+    .error-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .error-source {
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #FFD7D7;
+      white-space: pre-wrap;
+    }
+    .inline-error {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0 2px;
+      padding: 1px 6px;
+      border-radius: 6px;
+      background: rgba(255, 107, 107, 0.14);
+      color: #FFD7D7;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.92em;
+      line-height: 1.5;
+      vertical-align: baseline;
+    }
+    .inline-error-note {
+      color: #FF9A9A;
+      font-size: 0.82em;
+      font-family: -apple-system, sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .plaintext-block {
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .plaintext-source {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.98em;
+      line-height: 1.7;
+      color: #F2F2FF;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .plaintext-note {
+      margin-top: 8px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #FF9A9A;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .plaintext-inline {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.96em;
+      color: #F2F2FF;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 1px 5px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
   </style>
   <script src="katex.min.js"></script>
 </head>
@@ -66,6 +161,486 @@
       }
     }
 
+    function normalizeDocumentSource(source) {
+      return source
+        .replace(/\r\n?/g, '\n')
+        .replace(/```(?:latex|tex)?\s*([\s\S]*?)```/gi, '\n\n$1\n\n')
+        .replace(/\\\[\s*([\s\S]*?)\s*\\\]/g, '\n\n$$$1$$\n\n')
+        .replace(/\\\(\s*([\s\S]*?)\s*\\\)/g, '$$$1$');
+    }
+
+    function normalizeMathSource(source) {
+      var trimmed = source.trim();
+
+      var fencedMatch = trimmed.match(/^```(?:latex|tex)?\s*([\s\S]*?)```$/i);
+      if (fencedMatch) {
+        trimmed = fencedMatch[1].trim();
+      }
+
+      if (trimmed.startsWith('$$') && trimmed.endsWith('$$') && trimmed.length >= 4) {
+        return trimmed.slice(2, -2).trim();
+      }
+      if (trimmed.startsWith('\\[') && trimmed.endsWith('\\]') && trimmed.length >= 4) {
+        return trimmed.slice(2, -2).trim();
+      }
+      if (trimmed.startsWith('\\(') && trimmed.endsWith('\\)') && trimmed.length >= 4) {
+        return trimmed.slice(2, -2).trim();
+      }
+      if (trimmed.startsWith('$') && trimmed.endsWith('$') && trimmed.length >= 2) {
+        return trimmed.slice(1, -1).trim();
+      }
+
+      return trimmed;
+    }
+
+    var plainSymbolMap = {
+      alpha: '\u03b1',
+      beta: '\u03b2',
+      gamma: '\u03b3',
+      delta: '\u03b4',
+      epsilon: '\u03b5',
+      zeta: '\u03b6',
+      eta: '\u03b7',
+      theta: '\u03b8',
+      iota: '\u03b9',
+      kappa: '\u03ba',
+      lambda: '\u03bb',
+      mu: '\u03bc',
+      nu: '\u03bd',
+      xi: '\u03be',
+      pi: '\u03c0',
+      rho: '\u03c1',
+      sigma: '\u03c3',
+      tau: '\u03c4',
+      upsilon: '\u03c5',
+      phi: '\u03c6',
+      chi: '\u03c7',
+      psi: '\u03c8',
+      omega: '\u03c9',
+      Gamma: '\u0393',
+      Delta: '\u0394',
+      Theta: '\u0398',
+      Lambda: '\u039b',
+      Xi: '\u039e',
+      Pi: '\u03a0',
+      Sigma: '\u03a3',
+      Upsilon: '\u03a5',
+      Phi: '\u03a6',
+      Psi: '\u03a8',
+      Omega: '\u03a9',
+      cdot: '\u00b7',
+      times: '\u00d7',
+      pm: '\u00b1',
+      mp: '\u2213',
+      leq: '\u2264',
+      geq: '\u2265',
+      neq: '\u2260',
+      approx: '\u2248',
+      sim: '\u223c',
+      to: '\u2192',
+      rightarrow: '\u2192',
+      leftarrow: '\u2190',
+      Leftrightarrow: '\u21d4',
+      implies: '\u21d2',
+      infty: '\u221e',
+      partial: '\u2202',
+      nabla: '\u2207',
+      sum: '\u2211',
+      prod: '\u220f',
+      int: '\u222b',
+      oint: '\u222e',
+      degree: '\u00b0',
+      angle: '\u2220',
+      perp: '\u27c2',
+      parallel: '\u2225',
+      forall: '\u2200',
+      exists: '\u2203',
+      in: '\u2208',
+      notin: '\u2209',
+      subset: '\u2282',
+      subseteq: '\u2286',
+      superset: '\u2283',
+      supseteq: '\u2287',
+      cup: '\u222a',
+      cap: '\u2229',
+      ldots: '\u2026',
+      cdots: '\u22ef'
+    };
+
+    var plainDelimiterMap = {
+      lbrace: '{',
+      rbrace: '}',
+      langle: '\u27e8',
+      rangle: '\u27e9',
+      lvert: '|',
+      rvert: '|',
+      lVert: '||',
+      rVert: '||'
+    };
+
+    function isCommandLetter(char) {
+      return /[A-Za-z*@]/.test(char);
+    }
+
+    function readCommand(source, startIndex) {
+      var i = startIndex + 1;
+
+      if (i >= source.length) {
+        return { name: '', raw: '\\', end: i };
+      }
+
+      if (!isCommandLetter(source[i])) {
+        return {
+          name: source[i],
+          raw: source.slice(startIndex, i + 1),
+          end: i + 1
+        };
+      }
+
+      while (i < source.length && isCommandLetter(source[i])) {
+        i += 1;
+      }
+
+      return {
+        name: source.slice(startIndex + 1, i),
+        raw: source.slice(startIndex, i),
+        end: i
+      };
+    }
+
+    function skipWhitespace(source, index) {
+      var i = index;
+      while (i < source.length && /\s/.test(source[i])) {
+        i += 1;
+      }
+      return i;
+    }
+
+    function readBalanced(source, startIndex, openChar, closeChar) {
+      if (source[startIndex] !== openChar) {
+        return { content: '', end: startIndex };
+      }
+
+      var depth = 0;
+      var content = '';
+
+      for (var i = startIndex; i < source.length; i++) {
+        var char = source[i];
+
+        if (char === '\\' && i + 1 < source.length) {
+          if (depth > 0) {
+            content += char + source[i + 1];
+          }
+          i += 1;
+          continue;
+        }
+
+        if (char === openChar) {
+          if (depth > 0) {
+            content += char;
+          }
+          depth += 1;
+          continue;
+        }
+
+        if (char === closeChar) {
+          depth -= 1;
+          if (depth === 0) {
+            return { content: content, end: i + 1 };
+          }
+          content += char;
+          continue;
+        }
+
+        if (depth > 0) {
+          content += char;
+        }
+      }
+
+      return { content: content, end: source.length };
+    }
+
+    function readArgument(source, startIndex) {
+      var index = skipWhitespace(source, startIndex);
+
+      if (index >= source.length) {
+        return { content: '', end: index };
+      }
+
+      if (source[index] === '{') {
+        return readBalanced(source, index, '{', '}');
+      }
+
+      if (source[index] === '[') {
+        return readBalanced(source, index, '[', ']');
+      }
+
+      if (source[index] === '\\') {
+        var command = readCommand(source, index);
+        return { content: command.raw, end: command.end };
+      }
+
+      return {
+        content: source[index],
+        end: index + 1
+      };
+    }
+
+    function readOptionalArgument(source, startIndex) {
+      var index = skipWhitespace(source, startIndex);
+      if (index >= source.length || source[index] !== '[') {
+        return null;
+      }
+      return readBalanced(source, index, '[', ']');
+    }
+
+    function readDelimiter(source, startIndex) {
+      var index = skipWhitespace(source, startIndex);
+
+      if (index >= source.length) {
+        return { text: '', end: index };
+      }
+
+      if (source[index] === '.') {
+        return { text: '', end: index + 1 };
+      }
+
+      if (source[index] === '\\') {
+        var command = readCommand(source, index);
+        return {
+          text: plainDelimiterMap[command.name] || plainSymbolMap[command.name] || '',
+          end: command.end
+        };
+      }
+
+      return {
+        text: source[index],
+        end: index + 1
+      };
+    }
+
+    function normalizePlainTextMath(text, displayMode) {
+      var normalized = String(text || '')
+        .replace(/[ \t]+\n/g, '\n')
+        .replace(/\n[ \t]+/g, '\n')
+        .replace(/[ \t]{2,}/g, ' ')
+        .replace(/\s+([,.;:!?])/g, '$1')
+        .replace(/([([{])\s+/g, '$1')
+        .replace(/\s+([)\]}])/g, '$1')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+
+      if (!displayMode) {
+        normalized = normalized.replace(/\n+/g, ' ');
+      }
+
+      return normalized;
+    }
+
+    function latexToPlainText(source) {
+      var output = '';
+      var i = 0;
+
+      while (i < source.length) {
+        var char = source[i];
+
+        if (char === '\\') {
+          var command = readCommand(source, i);
+          var name = command.name;
+
+          if (name === '\\') {
+            output += '\n';
+            i = command.end;
+            continue;
+          }
+
+          if (plainSymbolMap[name]) {
+            output += plainSymbolMap[name];
+            i = command.end;
+            continue;
+          }
+
+          if (name === 'left' || name === 'right') {
+            var delimiter = readDelimiter(source, command.end);
+            output += delimiter.text;
+            i = delimiter.end;
+            continue;
+          }
+
+          if (name === 'frac' || name === 'dfrac' || name === 'tfrac') {
+            var numerator = readArgument(source, command.end);
+            var denominator = readArgument(source, numerator.end);
+            output += '(' + latexToPlainText(numerator.content).trim() + ')/(' + latexToPlainText(denominator.content).trim() + ')';
+            i = denominator.end;
+            continue;
+          }
+
+          if (name === 'sqrt') {
+            var root = readOptionalArgument(source, command.end);
+            var radicand = readArgument(source, root ? root.end : command.end);
+            output += root
+              ? 'root(' + latexToPlainText(radicand.content).trim() + ', ' + latexToPlainText(root.content).trim() + ')'
+              : 'sqrt(' + latexToPlainText(radicand.content).trim() + ')';
+            i = radicand.end;
+            continue;
+          }
+
+          if (
+            name === 'text' ||
+            name === 'textrm' ||
+            name === 'textsf' ||
+            name === 'texttt' ||
+            name === 'textbf' ||
+            name === 'textit' ||
+            name === 'mathrm' ||
+            name === 'mathsf' ||
+            name === 'mathtt' ||
+            name === 'mathbf' ||
+            name === 'mathit' ||
+            name === 'operatorname' ||
+            name === 'operatorname*'
+          ) {
+            var textArg = readArgument(source, command.end);
+            output += latexToPlainText(textArg.content);
+            i = textArg.end;
+            continue;
+          }
+
+          if (
+            name === 'boxed' ||
+            name === 'overline' ||
+            name === 'underline' ||
+            name === 'vec' ||
+            name === 'hat' ||
+            name === 'widehat' ||
+            name === 'tilde' ||
+            name === 'widetilde' ||
+            name === 'bar' ||
+            name === 'dot' ||
+            name === 'ddot'
+          ) {
+            var decoratedArg = readArgument(source, command.end);
+            var decoratedText = latexToPlainText(decoratedArg.content).trim();
+
+            if (name === 'boxed') {
+              output += '[' + decoratedText + ']';
+            } else {
+              output += name + '(' + decoratedText + ')';
+            }
+
+            i = decoratedArg.end;
+            continue;
+          }
+
+          if (
+            name === ',' ||
+            name === ';' ||
+            name === ':' ||
+            name === '!' ||
+            name === 'quad' ||
+            name === 'qquad' ||
+            name === 'enspace' ||
+            name === 'hspace' ||
+            name === 'hfill'
+          ) {
+            output += ' ';
+            i = command.end;
+            continue;
+          }
+
+          if (
+            name === 'displaystyle' ||
+            name === 'textstyle' ||
+            name === 'scriptstyle' ||
+            name === 'scriptscriptstyle' ||
+            name === 'limits' ||
+            name === 'nolimits'
+          ) {
+            i = command.end;
+            continue;
+          }
+
+          if (name === 'begin' || name === 'end') {
+            var environmentArg = readArgument(source, command.end);
+            var environmentName = environmentArg.content.trim();
+
+            if (name === 'begin' && environmentName === 'cases') {
+              output += '{\n';
+            } else if (name === 'end' && environmentName === 'cases') {
+              output += '\n}';
+            }
+
+            i = environmentArg.end;
+            continue;
+          }
+
+          var maybeArg = readArgument(source, command.end);
+          if (maybeArg.end > command.end && maybeArg.content.length > 0 && source[skipWhitespace(source, command.end)] === '{') {
+            output += name + '(' + latexToPlainText(maybeArg.content).trim() + ')';
+            i = maybeArg.end;
+            continue;
+          }
+
+          output += name;
+          i = command.end;
+          continue;
+        }
+
+        if (char === '^' || char === '_') {
+          var exponentArg = readArgument(source, i + 1);
+          var exponentText = latexToPlainText(exponentArg.content).trim();
+          output += char + (exponentText.length <= 1 ? exponentText : '(' + exponentText + ')');
+          i = exponentArg.end;
+          continue;
+        }
+
+        if (char === '{') {
+          var grouped = readBalanced(source, i, '{', '}');
+          output += latexToPlainText(grouped.content);
+          i = grouped.end;
+          continue;
+        }
+
+        if (char === '}') {
+          i += 1;
+          continue;
+        }
+
+        if (char === '&' || char === '~') {
+          output += ' ';
+          i += 1;
+          continue;
+        }
+
+        output += char;
+        i += 1;
+      }
+
+      return output;
+    }
+
+    function renderPlainTextMath(source, displayMode, message) {
+      var normalizedSource = normalizeMathSource(source);
+      var plainText = normalizePlainTextMath(
+        latexToPlainText(normalizedSource) || normalizedSource || '[empty math expression]',
+        displayMode
+      );
+      var htmlText = escapeHtml(plainText).replace(/\n/g, '<br>');
+
+      if (displayMode) {
+        return (
+          '<div class="plaintext-block">' +
+            '<div class="plaintext-source">' + htmlText + '</div>' +
+            (showErrors && message
+              ? '<div class="plaintext-note">' + escapeHtml(message) + '</div>'
+              : '') +
+          '</div>'
+        );
+      }
+
+      return '<span class="plaintext-inline">' + htmlText + '</span>';
+    }
+
     function renderMathToString(source, displayMode) {
       return katex.renderToString(source, {
         displayMode: displayMode,
@@ -75,26 +650,58 @@
       });
     }
 
-    function renderMathError(message) {
-      if (!showErrors) {
-        return '';
-      }
-      return '<div class="error-block">' + escapeHtml(message) + '</div>';
+    function renderMathError(message, source, displayMode) {
+      return renderPlainTextMath(source, displayMode, message);
     }
 
     function tryRenderMath(source, displayMode) {
+      var normalizedSource = normalizeMathSource(source);
+
       try {
-        return renderMathToString(source, displayMode);
+        return renderMathToString(normalizedSource, displayMode);
       } catch (e) {
         notifyError(e.message);
-        return renderMathError(e.message);
+        return renderMathError(e.message, source, displayMode);
       }
     }
 
     function formatPlainText(text) {
-      return escapeHtml(text)
-        .replace(/`([^`]+)`/g, '<code class="doc-code">$1</code>')
+      var placeholders = [];
+      var escaped = escapeHtml(text);
+
+      escaped = escaped.replace(/`([^`]+)`/g, function(_, codeContent) {
+        var token = '@@CODE' + placeholders.length + '@@';
+        placeholders.push('<code class="doc-code">' + codeContent + '</code>');
+        return token;
+      });
+
+      escaped = escaped.replace(/\[([^\]\n]+)\]\(([^)\n]+)\)/g, function(_, label, url) {
+        var token = '@@LINK' + placeholders.length + '@@';
+        placeholders.push(
+          '<span class="doc-link" title="' + escapeHtml(url) + '">' + label + '</span>'
+        );
+        return token;
+      });
+
+      escaped = escaped
+        .replace(/\*\*\*([^*]+)\*\*\*/g, '<strong class="doc-strong"><em class="doc-emphasis">$1</em></strong>')
+        .replace(/\*\*([^*]+)\*\*/g, '<strong class="doc-strong">$1</strong>')
+        .replace(/__([^_]+)__/g, '<strong class="doc-strong">$1</strong>')
+        .replace(/(^|[\s(])\*([^*\n]+)\*(?=[\s).,:;!?]|$)/g, '$1<em class="doc-emphasis">$2</em>')
         .replace(/\n/g, '<br>');
+
+      escaped = escaped.replace(
+        /<strong class="doc-strong">\[([^\]]+)\]<\/strong>/g,
+        '<strong class="doc-strong doc-bracket-label">[$1]</strong>'
+      );
+
+      return escaped
+        .replace(/@@CODE(\d+)@@/g, function(_, index) {
+          return placeholders[Number(index)] || '';
+        })
+        .replace(/@@LINK(\d+)@@/g, function(_, index) {
+          return placeholders[Number(index)] || '';
+        });
     }
 
     function findClosingDollar(text, startIndex) {
@@ -131,6 +738,19 @@
           }
         }
 
+        if (text[i] === '\\' && i + 1 < text.length && text[i + 1] === '(') {
+          var inlineClose = text.indexOf('\\)', i + 2);
+          if (inlineClose !== -1) {
+            result += formatPlainText(buffer);
+            buffer = '';
+
+            var inlineMath = text.slice(i + 2, inlineClose).trim();
+            result += inlineMath ? tryRenderMath(inlineMath, false) : '';
+            i = inlineClose + 2;
+            continue;
+          }
+        }
+
         buffer += text[i];
         i += 1;
       }
@@ -139,8 +759,156 @@
       return result;
     }
 
+    function hasEmbeddedMathDelimiters(block) {
+      var trimmed = block.trim();
+      if (
+        (trimmed.startsWith('$$') && trimmed.endsWith('$$')) ||
+        (trimmed.startsWith('\\[') && trimmed.endsWith('\\]')) ||
+        (trimmed.startsWith('\\(') && trimmed.endsWith('\\)')) ||
+        (trimmed.startsWith('$') && trimmed.endsWith('$'))
+      ) {
+        return false;
+      }
+
+      return /(^|[^\\])\$/.test(block) || /\\\(/.test(block) || /\\\[/.test(block);
+    }
+
+    function isProbablyTextBlock(block) {
+      if (hasEmbeddedMathDelimiters(block)) {
+        return true;
+      }
+
+      var proseCandidate = block
+        .replace(/\$[^$]*\$/g, ' ')
+        .replace(/\\\([^]*?\\\)/g, ' ')
+        .replace(/\\\[[\s\S]*?\\\]/g, ' ')
+        .replace(/\\[A-Za-z]+/g, ' ')
+        .replace(/\\./g, ' ')
+        .replace(/[{}_^&=+\-*/()[\],.;:<>|0-9]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      return /[A-Za-z]{2,}(?:\s+[A-Za-z]{2,})+/.test(proseCandidate);
+    }
+
+    function hasMarkdownFormatting(block) {
+      return /(\*\*\*[^*\n]+\*\*\*|\*\*[^*\n]+\*\*|__[^_\n]+__|(^|[\s(])\*[^*\n]+\*(?=[\s).,:;!?]|$)|\[[^\]\n]+\]\([^)]+\))/.test(block);
+    }
+
     function looksLikeBareLatex(block) {
-      return /\\[A-Za-z]+|[_^{}]|\\begin\{|\\end\{|\\frac|\\sum|\\int|\\sqrt|=/.test(block);
+      return !hasMarkdownFormatting(block) &&
+        !isProbablyTextBlock(block) &&
+        /\\[A-Za-z]+|[_^{}]|\\begin\{|\\end\{|\\frac|\\sum|\\int|\\sqrt|=/.test(block);
+    }
+
+    function escapeRegExp(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function splitIntoBlocks(source) {
+      var lines = normalizeDocumentSource(source).split('\n');
+      var blocks = [];
+      var paragraphLines = [];
+      var listLines = [];
+      var listType = null;
+
+      function flushParagraph() {
+        if (paragraphLines.length === 0) {
+          return;
+        }
+        blocks.push(paragraphLines.join('\n').trim());
+        paragraphLines = [];
+      }
+
+      function flushList() {
+        if (listLines.length === 0) {
+          return;
+        }
+        blocks.push(listLines.join('\n'));
+        listLines = [];
+        listType = null;
+      }
+
+      for (var i = 0; i < lines.length; i++) {
+        var line = lines[i];
+        var trimmed = line.trim();
+
+        if (trimmed.length === 0) {
+          flushParagraph();
+          flushList();
+          continue;
+        }
+
+        if (/^(#{1,6})\s+/.test(trimmed) || /^---+$/.test(trimmed) || /^\*\*\*+$/.test(trimmed)) {
+          flushParagraph();
+          flushList();
+          blocks.push(trimmed);
+          continue;
+        }
+
+        if (trimmed.startsWith('$$')) {
+          flushParagraph();
+          flushList();
+
+          var mathLines = [trimmed];
+          var closesOnSameLine = trimmed.endsWith('$$') && trimmed.length > 2;
+          while (!closesOnSameLine && i + 1 < lines.length) {
+            i += 1;
+            mathLines.push(lines[i]);
+            if (lines[i].trim().endsWith('$$')) {
+              break;
+            }
+          }
+          blocks.push(mathLines.join('\n').trim());
+          continue;
+        }
+
+        var envMatch = trimmed.match(/^\\begin\{([^}]+)\}/);
+        if (envMatch) {
+          flushParagraph();
+          flushList();
+
+          var envName = envMatch[1];
+          var endPattern = new RegExp('^\\\\end\\{' + escapeRegExp(envName) + '\\}');
+          var envLines = [line];
+
+          while (i + 1 < lines.length) {
+            i += 1;
+            envLines.push(lines[i]);
+            if (endPattern.test(lines[i].trim())) {
+              break;
+            }
+          }
+
+          blocks.push(envLines.join('\n').trim());
+          continue;
+        }
+
+        var nextListType = null;
+        if (/^[-*]\s+/.test(trimmed)) {
+          nextListType = 'unordered';
+        } else if (/^\d+\.\s+/.test(trimmed)) {
+          nextListType = 'ordered';
+        }
+
+        if (nextListType) {
+          flushParagraph();
+          if (listType && listType !== nextListType) {
+            flushList();
+          }
+          listType = nextListType;
+          listLines.push(trimmed);
+          continue;
+        }
+
+        flushList();
+        paragraphLines.push(line);
+      }
+
+      flushParagraph();
+      flushList();
+
+      return blocks.filter(function(block) { return block.length > 0; });
     }
 
     function renderBlock(block) {
@@ -151,11 +919,12 @@
         return '<h' + level + ' class="doc-heading">' + headingContent + '</h' + level + '>';
       }
 
+      if (/^---+$/.test(block) || /^\*\*\*+$/.test(block)) {
+        return '<hr class="doc-rule">';
+      }
+
       if ((block.startsWith('$$') && block.endsWith('$$')) || (block.startsWith('\\[') && block.endsWith('\\]'))) {
-        var blockMath = block.startsWith('$$')
-          ? block.slice(2, -2).trim()
-          : block.slice(2, -2).trim();
-        return tryRenderMath(blockMath, true);
+        return tryRenderMath(block, true);
       }
 
       var listLines = block.split('\n');
@@ -166,6 +935,13 @@
         return '<ul class="doc-list">' + listItems + '</ul>';
       }
 
+      if (listLines.every(function(line) { return /^\d+\.\s+/.test(line); })) {
+        var orderedItems = listLines.map(function(line) {
+          return '<li>' + renderInlineContent(line.replace(/^\d+\.\s+/, '')) + '</li>';
+        }).join('');
+        return '<ol class="doc-list doc-ordered-list">' + orderedItems + '</ol>';
+      }
+
       if (looksLikeBareLatex(block)) {
         return tryRenderMath(block, true);
       }
@@ -174,10 +950,7 @@
     }
 
     function renderDocument(source) {
-      return source
-        .split(/\n\s*\n/)
-        .map(function(block) { return block.trim(); })
-        .filter(function(block) { return block.length > 0; })
+      return splitIntoBlocks(source)
         .map(renderBlock)
         .join('');
     }
@@ -192,10 +965,10 @@
         return;
       }
 
-      var trimmed = source.trim();
+      var trimmed = normalizeDocumentSource(source).trim();
 
       try {
-        katex.render(trimmed, output, {
+        katex.render(normalizeMathSource(trimmed), output, {
           displayMode: true,
           throwOnError: true,
           trust: false,
@@ -208,7 +981,7 @@
           return;
         }
 
-        output.innerHTML = renderMathError(e.message);
+        output.innerHTML = renderMathError(e.message, source, true);
         notifyError(e.message);
       }
     }

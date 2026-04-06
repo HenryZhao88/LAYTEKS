@@ -16,6 +16,7 @@ struct NoteEditorView: View {
     @AppStorage("showRenderErrors")     private var showRenderErrors: Bool = true
 
     @State private var selectedTab: EditorTab = .edit
+    @State private var latestRenderError: String?
     @State private var showingAddTag = false
     @State private var newTagName = ""
     @State private var showingDeleteConfirm = false
@@ -68,32 +69,29 @@ struct NoteEditorView: View {
             Divider().background(theme.surface)
             tabContent
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private var splitLayout: some View {
-        VStack(spacing: 0) {
-            LaTeXEditorView(
-                text: $note.latexSource,
-                theme: theme,
-                fontSize: editorFontSize,
-                autocomplete: autocompleteBrackets,
-                onTextChange: { note.updatedAt = Date() }
-            )
-            .frame(maxHeight: .infinity)
-            .background(theme.surface)
+        GeometryReader { geometry in
+            let dividerHeight = livePreview ? 1.0 : 0.0
+            let availableHeight = max(geometry.size.height - dividerHeight, 0)
+            let editorHeight = livePreview ? availableHeight * 0.42 : availableHeight
+            let previewHeight = max(availableHeight - editorHeight, 0)
 
-            Divider().background(theme.accent.opacity(0.3))
+            VStack(spacing: 0) {
+                editorPane
+                    .frame(height: editorHeight)
 
-            if livePreview {
-                KaTeXWebView(
-                    latexSource: note.latexSource,
-                    theme: theme,
-                    showErrors: showRenderErrors
-                )
-                .frame(maxHeight: .infinity)
-                .background(theme.background)
+                if livePreview {
+                    Divider().background(theme.accent.opacity(0.3))
+
+                    previewPane
+                        .frame(height: previewHeight)
+                }
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private var tabPicker: some View {
@@ -120,27 +118,48 @@ struct NoteEditorView: View {
     @ViewBuilder
     private var tabContent: some View {
         if selectedTab == .edit {
-            LaTeXEditorView(
-                text: $note.latexSource,
-                theme: theme,
-                fontSize: editorFontSize,
-                autocomplete: autocompleteBrackets,
-                onTextChange: { note.updatedAt = Date() }
-            )
-            .background(theme.surface)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            editorPane
         } else {
-            ScrollView {
-                KaTeXWebView(
-                    latexSource: note.latexSource,
-                    theme: theme,
-                    showErrors: showRenderErrors
-                )
-                .frame(minHeight: 200)
+            previewPane
+        }
+    }
+
+    private var editorPane: some View {
+        LaTeXEditorView(
+            text: $note.latexSource,
+            theme: theme,
+            fontSize: editorFontSize,
+            autocomplete: autocompleteBrackets,
+            onTextChange: { note.updatedAt = Date() }
+        )
+        .background(theme.surface)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private var previewPane: some View {
+        VStack(spacing: 0) {
+            if let latestRenderError, !latestRenderError.isEmpty {
+                Text(latestRenderError)
+                    .font(.system(size: 12, weight: .medium, design: .monospaced))
+                    .foregroundStyle(Color(red: 1.0, green: 0.67, blue: 0.67))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .background(Color(red: 1.0, green: 0.42, blue: 0.42).opacity(0.12))
             }
-            .background(theme.background)
+
+            KaTeXWebView(
+                latexSource: note.latexSource,
+                theme: theme,
+                showErrors: showRenderErrors,
+                onError: { message in
+                    latestRenderError = message.isEmpty ? nil : message
+                }
+            )
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .background(theme.background)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private var metaRow: some View {
